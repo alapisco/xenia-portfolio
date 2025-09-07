@@ -14,10 +14,10 @@ export default function Hero() {
         <div className="flex-grow-[1]"></div>
         {/* Content Wrapper */}
         <div className="flex-grow-[2]">
-          <p className="mb-2 text-2xl font-normal leading-9 opacity-80">
+          <p className="mb-2 text-base md:text-lg font-normal leading-6 md:leading-7 opacity-80">
             Hi, I'm
           </p>
-          <h1 className="font-serif text-8xl font-normal leading-[144px]">
+          <h1 className="font-serif text-6xl md:text-8xl font-normal leading-[96px] md:leading-[144px]">
             Xenia.
           </h1>
           <p className="mt-6 max-w-[58rem] text-justify text-2xl font-normal leading-9 opacity-90">
