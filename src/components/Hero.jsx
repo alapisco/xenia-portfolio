@@ -6,10 +6,10 @@ export default function Hero() {
       id="home"
       className="relative flex min-h-[92vh] flex-col justify-center bg-brand-bg text-brand-text"
     >
-      <Nav />
 
       {/* Main content area */}
-      <div className="container flex flex-grow flex-col md:pl-14">
+      <div className="container flex flex-grow flex-col">
+                <Nav className="container mx-0 mt-8" />
         {/* Spacer Div */}
         <div className="flex-grow-[1]"></div>
         {/* Content Wrapper */}

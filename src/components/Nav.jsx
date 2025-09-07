@@ -1,113 +1,48 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import { Menu, X } from 'lucide-react';
 
-export default function Nav() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  // Lock page scroll when the mobile menu is open so the hamburger/X stays in place
-  useEffect(() => {
-    if (isMenuOpen) {
-      document.documentElement.style.overflow = 'hidden';
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.documentElement.style.overflow = '';
-      document.body.style.overflow = '';
-    }
-
-    return () => {
-      document.documentElement.style.overflow = '';
-      document.body.style.overflow = '';
-    };
-  }, [isMenuOpen]);
+export default function Nav({ className = '' }) {
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <>
+    <nav className={`relative flex w-full justify-end md:w-1/2 md:ml-auto lg:w-2/5 xl:w-1/3 md:justify-between ${className}`}>
       {/* Desktop Menu */}
-      <nav className="absolute right-28 top-10 hidden gap-20 text-brand-text/90 md:flex">
-        <a
-          href="#home"
-          className="text-[18px] font-normal leading-7 hover:opacity-80"
-        >
-          Home
-        </a>
-        <a
-          href="#projects"
-          className="text-[18px] font-normal leading-7 hover:opacity-80"
-        >
-          Projects
-        </a>
-        <a
-          href="#about"
-          className="text-[18px] font-normal leading-7 hover:opacity-80"
-        >
-          About
-        </a>
-        <a
-          href="#contact"
-          className="text-[18px] font-normal leading-7 hover:opacity-80"
-        >
-          Contact
-        </a>
-      </nav>
-
-      {/* Hamburger Button */}
-      <div className="absolute right-10 top-10 z-50 md:hidden">
-        <button onClick={toggleMenu} className="text-brand-text/90">
-          {isMenuOpen ? (
-            // X / close icon
-            <svg className="h-8 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="6" y1="6" x2="18" y2="18" />
-              <line x1="6" y1="18" x2="18" y2="6" />
-            </svg>
-          ) : (
-            // Hamburger icon
-            <svg className="h-8 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <line x1="3" y1="12" x2="21" y2="12"></line>
-              <line x1="3" y1="6" x2="21" y2="6"></line>
-              <line x1="3" y1="18" x2="21" y2="18"></line>
-            </svg>
-          )}
-        </button>
+      <div className="hidden md:flex md:items-center md:justify-between md:w-full">
+        <a href="#home" className="text-[18px] font-normal leading-7 text-brand-text/90 hover:opacity-80">Home</a>
+        <a href="#about" className="text-[18px] font-normal leading-7 text-brand-text/90 hover:opacity-80">About</a>
+        <a href="#projects" className="text-[18px] font-normal leading-7 text-brand-text/90 hover:opacity-80">Projects</a>
+        <a href="#contact" className="text-[18px] font-normal leading-7 text-brand-text/90 hover:opacity-80">Contact</a>
       </div>
 
+      {/* Hamburger Button */}
+      {!isOpen && (
+        <button
+          className="md:hidden text-brand-text/90"
+          onClick={() => setIsOpen(true)}
+          aria-label="Toggle menu"
+        >
+          <Menu size={24} />
+        </button>
+      )}
+
       {/* Mobile Menu */}
-      {isMenuOpen && (
-        <div className="fixed inset-0 z-40 bg-brand-bg md:hidden">
+      {isOpen && (
+        <div className="fixed inset-0 z-40 bg-brand-bg">
+          <button
+            className="absolute top-8 right-8 text-brand-text/90"
+            onClick={() => setIsOpen(false)}
+            aria-label="Close menu"
+          >
+            <X size={24} />
+          </button>
           <nav className="mt-24 flex flex-col items-center gap-10">
-            <a
-              href="#home"
-              className="text-2xl font-normal text-brand-text hover:opacity-80"
-              onClick={toggleMenu}
-            >
-              Home
-            </a>
-            <a
-              href="#projects"
-              className="text-2xl font-normal text-brand-text hover:opacity-80"
-              onClick={toggleMenu}
-            >
-              Projects
-            </a>
-            <a
-              href="#about"
-              className="text-2xl font-normal text-brand-text hover:opacity-80"
-              onClick={toggleMenu}
-            >
-              About
-            </a>
-            <a
-              href="#contact"
-              className="text-2xl font-normal text-brand-text hover:opacity-80"
-              onClick={toggleMenu}
-            >
-              Contact
-            </a>
+            <a href="#home" className="text-2xl font-normal text-brand-text hover:opacity-80" onClick={() => setIsOpen(false)}>Home</a>
+            <a href="#about" className="text-2xl font-normal text-brand-text hover:opacity-80" onClick={() => setIsOpen(false)}>About</a>
+            <a href="#projects" className="text-2xl font-normal text-brand-text hover:opacity-80" onClick={() => setIsOpen(false)}>Projects</a>
+            <a href="#contact" className="text-2xl font-normal text-brand-text hover:opacity-80" onClick={() => setIsOpen(false)}>Contact</a>
           </nav>
         </div>
       )}
-    </>
+    </nav>
   );
 }
