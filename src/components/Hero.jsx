@@ -14,18 +14,28 @@ export default function Hero() {
         <div className="flex-grow-[1]"></div>
         {/* Content Wrapper */}
         <div className="flex-grow-[2]">
-          <p className="mb-2 text-base md:text-lg font-normal leading-6 md:leading-7 opacity-80">
+                    <p className="mb-2 text-xl md:text-2xl font-normal leading-9 opacity-80">
             Hi, I'm
           </p>
           <h1 className="font-serif text-6xl md:text-8xl font-normal leading-[96px] md:leading-[144px]">
             Xenia.
           </h1>
-          <p className="mt-6 max-w-[58rem] text-justify text-2xl font-normal leading-9 opacity-90">
+          <p className="mt-6 max-w-[58rem] text-justify text-lg md:text-2xl font-normal leading-9 opacity-90 hidden md:block">
             I design clean, user-centered interfaces that make digital
             experiences feel simple, structured, and approachable. My work
             focuses on clarity, real-life usability, and just enough personality
             to feel human.
           </p>
+          <div className="md:hidden">
+            <p className="mt-6 max-w-[58rem] text-justify text-lg md:text-2xl font-normal leading-9 opacity-90">
+              I design clean, user-centered interfaces that make digital
+              experiences feel simple, structured, and approachable.
+            </p>
+            <p className="mt-6 max-w-[58rem] text-justify text-lg md:text-2xl font-normal leading-9 opacity-90">
+              My work focuses on clarity, real-life usability, and just enough
+              personality to feel human.
+            </p>
+          </div>
         </div>
         
       </div>
