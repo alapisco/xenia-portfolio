@@ -1,18 +1,17 @@
+
 import Hero from './components/Hero';
 import Projects from './components/Projects';
+import AboutMe from './components/AboutMe';
+import Contact from './components/Contact';
+import HeroV2 from './components/HeroV2';
 
 export default function App() {
   return (
     <>
-      <Hero />
+      <HeroV2 />
       <Projects />
-      {/* Stubs for the rest of your SPA anchors */}
-      <section id="about" className="container py-24">
-        <h2 className="text-2xl font-semibold">About</h2>
-      </section>
-      <section id="contact" className="container pb-24">
-        <h2 className="text-2xl font-semibold">Contact</h2>
-      </section>
+      <AboutMe />
+      <Contact />
     </>
   );
 }
